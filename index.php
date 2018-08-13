@@ -15,31 +15,36 @@ $ini = parse_ini_file($ini_file);
 <body>
 
 	<header>
-		<?php /*
-		if ($_GET['id1']=='Nauka-plywania') $menu_li = '
-		<li><a href="Plywam-">Pływam</a></li>
-		<li><a href="Instruktorzy-">Instruktorzy</a></li>
-		<li><a href="Oferta">Oferta</a></li>
-		<li><a href="Galeria">Galeria</a></li>
-		<li><a href="Cennik-">Cennik </a></li>
-		<li><a href="Lokalizacja-">Lokalizacja </a></li>
-		<li><a href="Kontakt">Kontakt</a></li>';
-		else
-		$menu_li = '
-		<li><a href="O-nas">O nas</a></li>
-		<li><a href="Oferta">Oferta</a></li>
-		<li><a href="Galeria">Galeria</a></li>
-		<li><a href="Kontakt">Kontakt</a></li>';
-		*/
-
-		$menu_li = '
-		<li><a href="Nauka-plywania">Pływam</a></li>
-		<li><a href="Instruktorzy">Instruktorzy</a></li>
-		<li><a href="Oferta">Oferta</a></li>
-		<li><a href="Galeria">Galeria</a></li>
-		<li><a href="Cennik">Cennik </a></li>
-		<li><a href="Lokalizacja">Lokalizacja </a></li>
-		<li><a href="Kontakt">Kontakt</a></li>';
+		<?php
+		if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+			'Nauka-plywania',
+			'Instruktorzy',
+			'Oferta',
+			'Galeria',
+			'Cennik',
+			'Lokalizacja',
+			'Kontakt',
+		))) {
+			$menu_li = '
+			<li><a href="Nauka-plywania">Pływam</a></li>
+			<li><a href="Instruktorzy">Instruktorzy</a></li>
+			<li><a href="Oferta">Oferta</a></li>
+			<li><a href="Galeria">Galeria</a></li>
+			<li><a href="Cennik">Cennik</a></li>
+			<li><a href="Lokalizacja">Lokalizacja</a></li>
+			<li><a href="Kontakt">Kontakt</a></li>';
+		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+				'Wyprawy',
+				'Galeria2',
+				'Do-pobrania2',
+				'Kontakt2',
+			))) {
+				$menu_li = '
+				<li><a href="Wyprawy">Oferta</a></li>
+				<li><a href="Galeria2">Galeria</a></li>
+				<li><a href="Do-pobrania2">Do pobrania</a></li>
+				<li><a href="Kontakt2">Kontakt</a></li>';
+			}
 
 
 		if ($_GET['id1']=='')	echo '<div class="logo"></div>';
@@ -109,8 +114,8 @@ $ini = parse_ini_file($ini_file);
 
 		</footer>
 
-		<div id="pop-slap" style="display: none" data-hello-text="Bądź na bieżąco, polub nas na Facebook.com" data-close-text="Dziękuję, już lubię tą stronę." data-timeout="4" data-demo="false"><script type="text/javascript" src="http://webfrik.pl/script/popup-fb?chx=787&amp;fb_url=https://www.facebook.com/Adrenalina24pl-418395038364703/&amp;fb_theme=light"></script></div>
-		<div id="facebook_slider_widget" style="display: none"><script type="text/javascript" src="http://webfrik.pl/widget/facebook_slider.html?fb_url=https://www.facebook.com/Adrenalina24pl-418395038364703/&amp;fb_width=290&amp;fb_height=590&amp;fb_faces=true&amp;fb_stream=true&amp;fb_header=true&amp;fb_border=true&amp;fb_theme=light&amp;chx=787&amp;speed=FAST&amp;fb_pic=logo&amp;position=RIGHT"></script></div>
+		<!-- <div id="pop-slap" style="display: none" data-hello-text="Bądź na bieżąco, polub nas na Facebook.com" data-close-text="Dziękuję, już lubię tą stronę." data-timeout="4" data-demo="false"><script type="text/javascript" src="http://webfrik.pl/script/popup-fb?chx=787&amp;fb_url=https://www.facebook.com/Adrenalina24pl-418395038364703/&amp;fb_theme=light"></script></div> -->
+		<!-- <div id="facebook_slider_widget" style="display: none"><script type="text/javascript" src="http://webfrik.pl/widget/facebook_slider.html?fb_url=https://www.facebook.com/Adrenalina24pl-418395038364703/&amp;fb_width=290&amp;fb_height=590&amp;fb_faces=true&amp;fb_stream=true&amp;fb_header=true&amp;fb_border=true&amp;fb_theme=light&amp;chx=787&amp;speed=FAST&amp;fb_pic=logo&amp;position=RIGHT"></script></div> -->
 
 	</body>
 	</html>

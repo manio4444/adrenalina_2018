@@ -71,25 +71,15 @@ background-image: radial-gradient(ellipse closest-corner at center, #52285A 0%, 
 .header2 li a { display: block; width:100%; height:100%; color:black; padding-top: 35px;}
 .header2 li a:hover { color:white; }
 
-.tlo_all {
-  height:477px;
-  position: relative;
-}
+
 .tlo_blur {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  background: url("tlo.png") center top;
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-  height:477px;
+background: url("tlo_blur.png") center top;
+height:477px;
 }
 
 .tlo {
-  background: url("tlo.png") no-repeat center top;
-  height:477px;
-  z-index: 1;
-  position: relative;
+background: url("tlo.png") no-repeat center top;
+height:477px;
 }
 
 .pytania {

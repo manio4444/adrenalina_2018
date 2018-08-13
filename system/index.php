@@ -2,8 +2,6 @@
 session_start();
 $ini_file = 'config/f5edca7c704382e57df58a255b71f79ace1f4c22';
 $ini = parse_ini_file($ini_file);
-$sec_version = '2.5.6';
-$editor_special = Array("menadzer-plikow", "ustawienia", "debug");
 
 function zalogowanie() {
 	global $ini;
@@ -21,7 +19,6 @@ function zalogowanie() {
 	echo $sec_ipa==$ini['sec_ipa'] . "<br />";
 */
 	if ($sec_ban==sha1($ini['sec_lgn']) && $sec_aut==1 && $sec_uag==$ini['sec_uag'] && $sec_ipa==$ini['sec_ipa']) return 1;
-	else if ($_COOKIE['superuser']==1) return 1;
 	else return 0;
 }
 
@@ -33,20 +30,6 @@ function ini_zmiana($co,$value) {
 	file_put_contents($ini_file, $content);
 	}
 }
-
-function input_ini($temp) {
-	return "<tr>
-	<th>" . $temp[0] . "</th>
-	<td>
-	<form method='POST'>
-	<input type='hidden' name='co' value='" . $temp[1] . "' />
-	<input type='" . $temp[2] . "' name='value' value='" . $temp[3] . "' />
-	<input type='submit' value='Zapisz' name='action_ini' />
-	</form>
-	<p>" . $temp[4] . "</p></td>
-	</tr>" . PHP_EOL;
-}
-
 
 //###################################################################### WYJEBUJE magic_quotes_gpc
 if (get_magic_quotes_gpc()) {
@@ -94,7 +77,7 @@ if (zalogowanie()!==1) { include('editor/logowanie.php'); die(); }
 
 if ($_POST['action_zapisz']) {
 
-	file_put_contents("include/" . $_GET['page'], $_POST['txt']);
+	file_put_contents("include/" . sha1($_GET['page']), $_POST['txt']);
 	$link = "Location: http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; header($link); die();
 }
 
@@ -144,8 +127,7 @@ if ($_POST['action_ini']) {
 <?php
 $menu = explode(',',$ini['editor'] );
 foreach ($menu as $temp) {
-	$name = (!empty($ini['name_' . $temp])) ? $ini['name_' . $temp] : $temp;
-echo "<li><a href='?page=$temp'>" . $name . "</a></li>";
+echo "<li><a href='?page=$temp'>" . $ini['name_' . $temp] . "</a></li>";
 }
 ?>
 </ul>
@@ -163,10 +145,10 @@ echo "<li><a href='?page=$temp'>" . $name . "</a></li>";
 <?php
 
 
-if($_GET['page']) {
+if($_GET['page'])	 {
 	if($ini['type_' . $_GET['page']]=='wyswig') {
 	$name = $ini['name_' . $_GET['page']];
-	$txt = file_get_contents("include/" . $_GET['page']);
+	$txt = file_get_contents("include/" . sha1($_GET['page']));
 	echo "
 	<form method=\"post\">
 	<h1>$name<input type='submit' value='Zapisz' name='action_zapisz' /></h1>

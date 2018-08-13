@@ -1,4 +1,5 @@
-<?
+<?php
+$cleanUrl = $_SERVER['SERVER_NAME'] . str_replace(basename(__FILE__), '', $_SERVER['SCRIPT_NAME']);
 $ini_file = 'system/config/f5edca7c704382e57df58a255b71f79ace1f4c22';
 $ini = parse_ini_file($ini_file);
 ?>
@@ -50,7 +51,7 @@ $ini = parse_ini_file($ini_file);
 		if ($_GET['id1']=='')	echo '<div class="logo"></div>';
 		else echo '
 		<div class="header2">
-			<div class="logo2"><a href="http://' . $_SERVER['HTTP_HOST'] . '"></a></div>
+			<div class="logo2"><a href="http://' . $cleanUrl . '"></a></div>
 			<ul>' . $menu_li . '
 			</ul>
 		</div>

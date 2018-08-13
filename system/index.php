@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 $ini_file = 'config/f5edca7c704382e57df58a255b71f79ace1f4c22';
 $ini = parse_ini_file($ini_file);
@@ -7,8 +7,8 @@ function zalogowanie() {
 	global $ini;
 	$sec_uag = preg_replace("/[^a-zA-Z0-9]+/", "", $_SERVER['HTTP_USER_AGENT'] );
 	$sec_ipa = $_SERVER['REMOTE_ADDR'];
-	$sec_ban = $_SESSION['sec_ban'];
-	$sec_aut = $_SESSION['sec_aut'];
+	$sec_ban = isset($_SESSION['sec_ban']) ? $_SESSION['sec_ban'] : null;
+	$sec_aut = isset($_SESSION['sec_aut']) ? $_SESSION['sec_aut'] : null;
 /*
 	echo $sec_ban . "<br />";
 	echo sha1($ini['sec_lgn']) . "<br />";
@@ -25,6 +25,7 @@ function zalogowanie() {
 function ini_zmiana($co,$value) {
 	global $ini, $ini_file;
 	$ini[$co] = $value;
+	$content = '';
 	foreach ($ini as $temp=>$temp2) {
 	$content .= "$temp = $temp2" . PHP_EOL;
 	file_put_contents($ini_file, $content);
@@ -48,7 +49,7 @@ if (get_magic_quotes_gpc()) {
     $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 }
 
-if ($_POST['sec_lgn'] && $_POST['sec_pwd']) {
+if (isset($_POST['sec_lgn']) && isset($_POST['sec_pwd'])) {
 
 		$sec_lgn = $_POST['sec_lgn'];
 		$sec_pwd = sha1($_POST['sec_pwd']);
@@ -61,31 +62,31 @@ if ($_POST['sec_lgn'] && $_POST['sec_pwd']) {
 		ini_zmiana("sec_ipa", $sec_ipa);
 		ini_zmiana("sec_uag", $sec_uag);
 		}
-		$link = "Location: http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; header($link); die();
+		$link = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; header($link); die();
 
 }
 
-if ($_GET['sec_off']) {
+if (isset($_GET['sec_off'])) {
 
 	$_SESSION = array();
 	session_destroy();
-	$link = "Location: http://" . $_SERVER[HTTP_HOST]; header($link); die();
+	$link = "Location: http://" . $_SERVER['HTTP_HOST']; header($link); die();
 }
 
 //###################################################################### SPRAWDZA CZY ZALOGOWANO
 if (zalogowanie()!==1) { include('editor/logowanie.php'); die(); }
 
-if ($_POST['action_zapisz']) {
+if (isset($_POST['action_zapisz'])) {
 
 	file_put_contents("include/" . sha1($_GET['page']), $_POST['txt']);
-	$link = "Location: http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; header($link); die();
+	$link = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; header($link); die();
 }
 
-if ($_POST['action_ini']) {
+if (isset($_POST['action_ini'])) {
 
 	if ($_POST['co']=='sec_pwd')  ini_zmiana($_POST['co'], sha1($_POST['value']));
 	else ini_zmiana($_POST['co'], $_POST['value']);
-	$link = "Location: http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; header($link); die();
+	$link = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; header($link); die();
 }
 
 ?>
@@ -145,7 +146,7 @@ echo "<li><a href='?page=$temp'>" . $ini['name_' . $temp] . "</a></li>";
 <?php
 
 
-if($_GET['page'])	 {
+if (isset($_GET['page'])) {
 	if($ini['type_' . $_GET['page']]=='wyswig') {
 	$name = $ini['name_' . $_GET['page']];
 	$txt = file_get_contents("include/" . sha1($_GET['page']));

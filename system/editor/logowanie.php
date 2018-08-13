@@ -80,7 +80,7 @@ border-top-right-radius: 6px;
 <input type="password" name="sec_pwd" />
 <?php
 if (isset($_COOKIE['logowanie'])) echo "<p>" . $_COOKIE['logowanie'] . "</p>";
-else if ($sec_upr==2) echo "<p>Sesja wygasła</p>";
+// else if ($sec_upr==2) echo "<p>Sesja wygasła</p>";
  ?>
 <input type="submit" value="LOGOWANIE" />
 

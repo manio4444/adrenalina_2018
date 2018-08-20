@@ -24,7 +24,6 @@ $ini = parse_ini_file($ini_file);
 			'Galeria',
 			'Cennik',
 			'Lokalizacja',
-			'Kontakt',
 		))) {
 			$menu_li = '
 			<li><a href="Nauka-plywania">Pływam</a></li>
@@ -35,29 +34,50 @@ $ini = parse_ini_file($ini_file);
 			<li><a href="Lokalizacja">Lokalizacja</a></li>
 			<li><a href="Kontakt">Kontakt</a></li>';
 		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
-				'Obozy-letnie',
-				'Galeria2',
-				'Do-pobrania2',
-				'Kontakt2',
-			))) {
-				$menu_li = '
-				<li><a href="Wyprawy">Oferta</a></li>
-				<li><a href="Galeria2">Galeria</a></li>
-				<li><a href="Do-pobrania2">Do pobrania</a></li>
-				<li><a href="Kontakt2">Kontakt</a></li>';
-			}
+			'Wycieczki-szkolne',
+			'Wycieczki-szkolne-galeria',
+			'Wycieczki-szkolne-cennik',
+		))) {
+			$menu_li = '
+			<li><a href="Wycieczki-szkolne">Oferta</a></li>
+			<li><a href="Wycieczki-szkolne-galeria">Galeria</a></li>
+			<li><a href="Wycieczki-szkolne-cennik">Cennik</a></li>
+			<li><a href="Kontakt">Kontakt</a></li>';
+		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+			'Obozy-zimowe',
+			'Obozy-zimowe-galeria',
+			'Obozy-zimowe-cennik',
+		))) {
+			$menu_li = '
+			<li><a href="Obozy-zimowe">Oferta</a></li>
+			<li><a href="Obozy-zimowe-galeria">Galeria</a></li>
+			<li><a href="Obozy-zimowe-cennik">Cennik</a></li>
+			<li><a href="Kontakt">Kontakt</a></li>';
+		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+			'Obozy-letnie',
+			'Obozy-letnie-galeria',
+			'Obozy-letnie-cennik',
+		))) {
+			$menu_li = '
+			<li><a href="Obozy-letnie">Oferta</a></li>
+			<li><a href="Obozy-letnie-galeria">Galeria</a></li>
+			<li><a href="Obozy-letnie-cennik">Cennik</a></li>
+			<li><a href="Kontakt">Kontakt</a></li>';
+		}
 
+		$menu_li = empty($menu_li) ? "" : "<ul>" . $menu_li . "</ul>";
 
-		if ($_GET['id1']=='')	echo '<div class="logo"></div>';
+		if (isset($_GET['id1']) && $_GET['id1']=='')	echo '<div class="logo"></div>';
 		else echo '
 		<div class="header2">
-			<div class="logo2"><a href="http://' . $cleanUrl . '"></a></div>
-			<ul>' . $menu_li . '
-			</ul>
+			<div class="logo2">
+				<a href="http://' . $cleanUrl . '"></a>
+			</div>
+			' . $menu_li . '
 		</div>
 		';
 
-		if ($_GET['id1']=='Wyprawy')
+		if (isset($_GET['id1']) && $_GET['id1']=='Wyprawy')
 
 		echo '
 		<div class="tlo_blur"><div class="tlo"><div class="auto">
@@ -80,15 +100,19 @@ $ini = parse_ini_file($ini_file);
 
 			<?php
 			$path = 'system/include/';
-			$id1 = sha1($_GET['id1']);
-			if (isset($_GET['id1']))
-			if(file_exists($path . $id1)) {
-				if ($ini['type_' . $_GET['id1']]=='wyswig') echo '<div class="section_txt">';
+
+			if (isset($_GET['id1'])) {
+				$id1 = sha1($_GET['id1']);
+				if(!file_exists($path . $id1)) {
+					echo'<h1>Nie można znaleźć strony "' . $_GET['id1'] . '"</h1>';
+				} else {
+					if ($ini['type_' . $_GET['id1']]=='wyswig') echo '<div class="section_txt">';
 					include($path . $id1);
 					if ($ini['type_' . $_GET['id1']]=='wyswig') echo '</div>';
 				}
-				else echo'<h1>Nie można znaleźć strony "' . $_GET['id1'] . '"</h1>';
-				else include($path . sha1('Glowna'));
+			} else {
+				include($path . sha1('Glowna'));
+			}
 				?>
 
 			</div>
@@ -100,10 +124,10 @@ $ini = parse_ini_file($ini_file);
 				<p>Idź do podstrony: </p>
 
 				<ul>
-					<li><a href="Nauka-plywania">Nauka pływania</a> /</li>
-					<li><a href="Nordic-Walking">Nordic Walking</a> /</li>
-					<li><a href="Obozy-zimowe">Obozy zimowe</a> /</li>
-					<li><a href="Obozy-letnie">Obozy letnie</a> /</li>
+					<li><a href="Nauka-plywania">Nauka pływania</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
+					<li><a href="Wycieczki-szkolne">Wycieczki szkolne</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
+					<li><a href="Obozy-zimowe">Obozy zimowe</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
+					<li><a href="Obozy-letnie">Obozy letnie</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
 					<li><a href="Dzialania-spoleczne">Działania społeczne</a></li>
 				</ul>
 

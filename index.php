@@ -35,7 +35,7 @@ $ini = parse_ini_file($ini_file);
 			<li><a href="Lokalizacja">Lokalizacja</a></li>
 			<li><a href="Kontakt">Kontakt</a></li>';
 		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
-				'Wyprawy',
+				'Obozy-letnie',
 				'Galeria2',
 				'Do-pobrania2',
 				'Kontakt2',
@@ -102,8 +102,8 @@ $ini = parse_ini_file($ini_file);
 				<ul>
 					<li><a href="Nauka-plywania">Nauka pływania</a> /</li>
 					<li><a href="Nordic-Walking">Nordic Walking</a> /</li>
-					<li><a href="Wyprawy">Wyprawy</a> /</li>
-					<li><a href="Aktywny-senior">Aktywny senior</a> /</li>
+					<li><a href="Obozy-zimowe">Obozy zimowe</a> /</li>
+					<li><a href="Obozy-letnie">Obozy letnie</a> /</li>
 					<li><a href="Dzialania-spoleczne">Działania społeczne</a></li>
 				</ul>
 

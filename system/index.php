@@ -152,7 +152,11 @@ echo "<li title='" . sha1($temp) . "'><a href='?page=$temp'>" . $ini['name_' . $
 if (isset($_GET['page'])) {
 	if($ini['type_' . $_GET['page']]=='wyswig') {
 	$name = $ini['name_' . $_GET['page']];
-	$txt = file_get_contents("include/" . sha1($_GET['page']));
+	if (file_exists("include/" . sha1($_GET['page']))) {
+		$txt = file_get_contents("include/" . sha1($_GET['page']));
+	} else {
+		$txt = "";
+	}
 	echo "
 	<form method=\"post\">
 	<h1>$name<input type='submit' value='Zapisz' name='action_zapisz' /></h1>

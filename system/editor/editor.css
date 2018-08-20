@@ -36,10 +36,10 @@ position:fixed;
 width:100%;
 box-shadow:
 	inset 0px 20px 20px -20px #222 ,
-	inset 0px -20px 20px -20px #222 ; 
+	inset 0px -20px 20px -20px #222 ;
 }
 
-header, .logoff a {color:#ccc;}	
+header, .logoff a {color:#ccc;}
 
 .title {
 float:left;
@@ -63,7 +63,7 @@ vertical-align:top;
 font-weight: normal;
 height:100%;
 display:table-cell;
-min-width:155px;
+min-width:190px;
 background:#ECECEC;
 
 -webkit-box-shadow: inset -40px 0px 8px -40px rgba(112,112,112,0.8);

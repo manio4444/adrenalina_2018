@@ -74,24 +74,46 @@ $ini = parse_ini_file($ini_file);
 				<a href="http://' . $cleanUrl . '"></a>
 			</div>
 			' . $menu_li . '
-		</div>
-		';
+		</div>';
 
-		if (isset($_GET['id1']) && $_GET['id1']=='Wyprawy')
+	$circle_contact = '
+		<div class="pytania">
+			<strong>Masz pytania?</strong>
+			<p>Napisz lub zadzwoń!</p>
+			<br />
+			+48 <strong>731 764 448</strong>
+			<p>kontakt@adrenalina24.pl</p>
+		</div>';
 
+	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+		'Wycieczki-szkolne',
+	))) {
 		echo '
 		<div class="tlo_blur"><div class="tlo"><div class="auto">
+			' . $circle_contact . '
+		</div></div></div>';
+	}
 
-			<div class="pytania">
-				<strong>Masz pytania?</strong>
-				<p>Napisz lub zadzwoń!</p>
-				<br />
-				+48 <strong>731 764 448</strong>
-				<p>kontakt@adrenalina24.pl</p>
-			</div>
 
-		</div></div></div>
-		';
+	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+		'Obozy-zimowe',
+	))) {
+		echo '
+		<div class="tlo_blur"><div class="tlo"><div class="auto">
+			' . $circle_contact . '
+		</div></div></div>';
+	}
+
+
+	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+		'Obozy-letnie',
+	))) {
+		echo '
+		<div class="tlo_blur"><div class="tlo"><div class="auto">
+			' . $circle_contact . '
+		</div></div></div>';
+	}
+
 		?>
 	</header>
 

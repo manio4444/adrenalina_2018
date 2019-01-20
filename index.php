@@ -63,6 +63,16 @@ $ini = parse_ini_file($ini_file);
 			<li><a href="Obozy-letnie-galeria">Galeria</a></li>
 			<li><a href="Obozy-letnie-cennik">Cennik</a></li>
 			<li><a href="Kontakt">Kontakt</a></li>';
+		} else if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+			'Splywy-kajakowe',
+			'Splywy-kajakowe-galeria',
+			'Splywy-kajakowe-cennik',
+		))) {
+			$menu_li = '
+			<li><a href="Splywy-kajakowe">Oferta</a></li>
+			<li><a href="Splywy-kajakowe-galeria">Galeria</a></li>
+			<li><a href="Splywy-kajakowe-cennik">Cennik</a></li>
+			<li><a href="Kontakt">Kontakt</a></li>';
 		}
 
 		$menu_li = empty($menu_li) ? "" : "<ul>" . $menu_li . "</ul>";
@@ -89,9 +99,10 @@ $ini = parse_ini_file($ini_file);
 		'Wycieczki-szkolne',
 	))) {
 		echo '
-		<div class="tlo_blur"><div class="tlo"><div class="auto">
+		<div class="tlo_blur"><div class="tlo"></div>
+		<div class="auto">
 			' . $circle_contact . '
-		</div></div></div>';
+		</div></div>';
 	}
 
 
@@ -99,9 +110,10 @@ $ini = parse_ini_file($ini_file);
 		'Obozy-zimowe',
 	))) {
 		echo '
-		<div class="tlo_blur"><div class="tlo"><div class="auto">
+		<div class="tlo_blur"><div class="tlo"></div>
+		<div class="auto">
 			' . $circle_contact . '
-		</div></div></div>';
+		</div></div>';
 	}
 
 
@@ -109,9 +121,21 @@ $ini = parse_ini_file($ini_file);
 		'Obozy-letnie',
 	))) {
 		echo '
-		<div class="tlo_blur"><div class="tlo"><div class="auto">
+		<div class="tlo_blur"><div class="tlo"></div>
+		<div class="auto">
 			' . $circle_contact . '
-		</div></div></div>';
+		</div></div>';
+	}
+
+
+	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+		'Splywy-kajakowe',
+	))) {
+		echo '
+		<div class="page_bgn_banner page_bgn_banner--kayak"></div>
+		<div class="auto">
+			' . $circle_contact . '
+		</div>';
 	}
 
 		?>
@@ -150,7 +174,7 @@ $ini = parse_ini_file($ini_file);
 					<li><a href="Wycieczki-szkolne">Wycieczki szkolne</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
 					<li><a href="Obozy-zimowe">Obozy zimowe</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
 					<li><a href="Obozy-letnie">Obozy letnie</a>&nbsp;&nbsp;&nbsp;&nbsp;/ </li>
-					<li><a href="Dzialania-spoleczne">Działania społeczne</a></li>
+					<li><a href="Splywy-kajakowe">Spływy Kajakowe</a></li>
 				</ul>
 
 			</nav>

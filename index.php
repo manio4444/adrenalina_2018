@@ -121,10 +121,10 @@ $ini = parse_ini_file($ini_file);
 		<div class="section_content">
 
 			<?php
-			$path = 'system/include/';
+			$path = 'database/content/';
 
 			if (isset($_GET['id1'])) {
-				$id1 = sha1($_GET['id1']);
+				$id1 = $_GET['id1'];
 				if(!file_exists($path . $id1)) {
 					echo'<h1>Nie można znaleźć strony "' . $_GET['id1'] . '"</h1>';
 				} else {
@@ -133,7 +133,7 @@ $ini = parse_ini_file($ini_file);
 					if ($ini['type_' . $_GET['id1']]=='wyswig') echo '</div>';
 				}
 			} else {
-				include($path . sha1('Glowna'));
+				include($path . 'Glowna');
 			}
 				?>
 

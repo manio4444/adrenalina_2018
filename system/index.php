@@ -95,6 +95,23 @@ if (isset($_POST['action_zapisz'])) {
 	$link = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; header($link); die();
 }
 
+// echo "<table>";
+// $lp =1;
+// foreach ($ini as $key => $value) {
+// 	if (strpos($key, 'name_') === FALSE) continue;
+// 	$fileerer = "include/" . sha1(str_replace('name_', '', $key));
+// 	if (!file_exists($fileerer)) continue;
+// 	$key2 = str_replace('name_', '', $key);
+// 	$sha = "include/" . sha1(str_replace('name_', '', $key));
+//
+// 	echo "<tr><td>$lp</td><td>$key2</td>  <td>$value</td> <td>$sha</td></tr>";
+// 	copy ($fileerer, FOLDER_CONTENT . '/' . $key2);
+// 	unlink ($fileerer);
+//
+// 	$lp++;
+// }
+// echo "</table>";
+
 if (isset($_POST['action_ini'])) {
 
 	if ($_POST['co']=='sec_pwd')  ini_zmiana($_POST['co'], sha1($_POST['value']));

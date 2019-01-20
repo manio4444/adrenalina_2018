@@ -4,6 +4,9 @@ $ini_file = 'config/f5edca7c704382e57df58a255b71f79ace1f4c22';
 $ini = parse_ini_file($ini_file);
 $sec_version = '2.5.6';
 $editor_special = Array("menadzer-plikow", "ustawienia", "debug");
+define('FOLDER_ROOT', __DIR__ . '/../');
+define('FOLDER_CONTENT', FOLDER_ROOT . 'database/content');
+
 
 function zalogowanie() {
 	global $ini;
@@ -33,6 +36,13 @@ function ini_zmiana($co,$value) {
 	$content .= "$temp = $temp2" . PHP_EOL;
 	file_put_contents($ini_file, $content);
 	}
+}
+
+function template_file_exists($contentId) {
+	return (file_exists(FOLDER_CONTENT . '/' . $contentId));
+}
+function template_file_get($contentId) {
+	return file_get_contents(FOLDER_CONTENT . '/' . $contentId);
 }
 
 //###################################################################### WYJEBUJE magic_quotes_gpc
@@ -81,7 +91,7 @@ if (zalogowanie()!==1) { include('editor/logowanie.php'); die(); }
 
 if (isset($_POST['action_zapisz'])) {
 
-	file_put_contents("include/" . sha1($_GET['page']), $_POST['txt']);
+	file_put_contents(FOLDER_CONTENT . '/' . $_GET['page'], $_POST['txt']);
 	$link = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; header($link); die();
 }
 
@@ -150,10 +160,13 @@ echo "<li title='" . sha1($temp) . "'><a href='?page=$temp'>" . $ini['name_' . $
 
 
 if (isset($_GET['page'])) {
-	if($ini['type_' . $_GET['page']]=='wyswig') {
+	if (
+		key_exists('type_' . $_GET['page'], $ini)
+		&& $ini['type_' . $_GET['page']] == 'wyswig'
+	) {
 	$name = $ini['name_' . $_GET['page']];
-	if (file_exists("include/" . sha1($_GET['page']))) {
-		$txt = file_get_contents("include/" . sha1($_GET['page']));
+	if (template_file_exists($_GET['page'])) {
+		$txt = template_file_get($_GET['page']);
 	} else {
 		$txt = "";
 	}
@@ -165,7 +178,9 @@ if (isset($_GET['page'])) {
 	</form>
 
 	";
-	} else include("special/" . sha1($_GET['page']));
+} else {
+	include("include/" . $_GET['page']);
+}
 
 }
 

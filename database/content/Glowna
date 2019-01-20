@@ -1,12 +1,42 @@
 <nav class="nav_ico">
 
 
-<ul>
-  <li class="iko1"><a href="Nauka-plywania"></a></li>
-  <li class="iko2"><a href="Wycieczki-szkolne"></a></li>
-  <li class="iko3"><a href="Obozy-zimowe"></a></li>
-  <li class="iko4"><a href="Obozy-letnie"></a></li>
-  <li class="iko5"><a href="Dzialania-spoleczne"></a></li>
-</ul>
+  <ul>
+    <li class="ico ico--1">
+      <a href="Nauka-plywania">
+        <span class="ico__img"></span>
+        <span class="ico__txt">Nauka plywania</span>
+
+      </a>
+    </li>
+    <li class="ico ico--2">
+      <a href="Wycieczki-szkolne">
+        <span class="ico__img"></span>
+        <span class="ico__txt">Wycieczki szkolne</span>
+
+      </a>
+    </li>
+    <li class="ico ico--3">
+      <a href="Obozy-zimowe">
+        <span class="ico__img"></span>
+        <span class="ico__txt">Obozy zimowe</span>
+
+      </a>
+    </li>
+    <li class="ico ico--4">
+      <a href="Obozy-letnie">
+        <span class="ico__img"></span>
+        <span class="ico__txt">Obozy letnie</span>
+
+      </a>
+    </li>
+    <li class="ico ico--5">
+      <a href="Dzialania-spoleczne">
+        <span class="ico__img"></span>
+        <span class="ico__txt">Dzialania spoleczne</span>
+
+      </a>
+    </li>
+  </ul>
 
 </nav>

@@ -137,15 +137,137 @@ section h2 { font-size: 120%; font-weight:bold; padding: 20px 0; }
 
 .nav_ico {
   min-height:559px;
-  background: url("ikony.png?v=1.1") no-repeat center top;
-
 }
 
-.nav_ico ul { height:559px; width:972px; margin:auto; }
-.nav_ico li { display: inline-block; margin: 0; }
-.nav_ico a { display: block; width:100%; height:100%; }
-.iko1, .iko2, .iko3, .iko4, .iko5 { /*background: rgba(255,180,180, 0.5);*/ width:33%; height:253px; }
-.nav_ico .iko4 { margin-left:150px; }
+.nav_ico ul {
+  width: 100%;
+  max-width: 1010px;
+  margin:auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav_ico .ico {
+  display: block;
+  flex-basis: 300px;
+  margin: 0 18px;
+  height:253px;
+  display: flex;
+  position: relative;
+
+  /* opacity: .7; */
+  /* background: rgba(255,180,180, 0.5); */
+}
+
+.nav_ico .ico::before {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 230px;
+  height: 230px;
+}
+
+.nav_ico .ico--1::before {
+  background-image: -moz-linear-gradient( 130deg, rgb(83,36,88) 0%, rgb(167,36,149) 100%); background-image: -webkit-linear-gradient( 130deg, rgb(83,36,88) 0%, rgb(167,36,149) 100%); background-image: -ms-linear-gradient( 130deg, rgb(83,36,88) 0%, rgb(167,36,149) 100%);
+}
+.nav_ico .ico--2::before {
+  background-image: -moz-linear-gradient( 130deg, rgb(117,53,124) 0%, rgb(211,56,189) 100%); background-image: -webkit-linear-gradient( 130deg, rgb(117,53,124) 0%, rgb(211,56,189) 100%); background-image: -ms-linear-gradient( 130deg, rgb(117,53,124) 0%, rgb(211,56,189) 100%);
+}
+.nav_ico .ico--3::before {
+  background-image: -moz-linear-gradient( 130deg, rgb(142,72,149) 0%, rgb(208,78,190) 100%); background-image: -webkit-linear-gradient( 130deg, rgb(142,72,149) 0%, rgb(208,78,190) 100%); background-image: -ms-linear-gradient( 130deg, rgb(142,72,149) 0%, rgb(208,78,190) 100%);
+}
+.nav_ico .ico--4::before {
+  background-image: -moz-linear-gradient( 130deg, rgb(153,36,166) 0%, rgb(235,59,210) 100%); background-image: -webkit-linear-gradient( 130deg, rgb(153,36,166) 0%, rgb(235,59,210) 100%); background-image: -ms-linear-gradient( 130deg, rgb(153,36,166) 0%, rgb(235,59,210) 100%);
+}
+.nav_ico .ico--5::before {
+  background-color: rgb(199, 104, 186);
+}
+
+.nav_ico a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.nav_ico .ico__txt {
+  background-repeat: no-repeat;
+  width: 124px;
+  height: 130px;
+  position: absolute;
+  left: 160px;
+  bottom: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 22px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.nav_ico .ico--1 .ico__txt {
+  /* background-color: rgb(105, 26, 94); */
+  background-image: url("main_icon_txt_1.png");
+}
+.nav_ico .ico--2 .ico__txt {
+  /* background-color: rgb(124, 48, 114); */
+  background-image: url("main_icon_txt_2.png");
+}
+.nav_ico .ico--3 .ico__txt {
+  /* background-color: rgb(154, 66, 142); */
+  background-image: url("main_icon_txt_3.png");
+}
+.nav_ico .ico--4 .ico__txt {
+  /* background-color: rgb(170, 72, 156); */
+  background-image: url("main_icon_txt_4.png");
+}
+.nav_ico .ico--5 .ico__txt {
+  /* background-color: rgb(211, 114, 197); */
+  background-image: url("main_icon_txt_5.png");
+}
+
+.nav_ico .ico .ico__img {
+  position: absolute;
+  width: 217px;
+  height: 217px;
+  left: 3px;
+  bottom: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nav_ico .ico--1 .ico__img {
+  background-image: url("main_icon_img_1.png");
+  background-color: transparent;
+  border-radius: 0;
+  height: 239px;
+
+}
+.nav_ico .ico--2 .ico__img {
+  background-image: url("main_icon_img_2.png");
+}
+.nav_ico .ico--3 .ico__img {
+  background-image: url("main_icon_img_3.png");
+  background-size: contain;
+}
+.nav_ico .ico--4 .ico__img {
+  background-image: url("main_icon_img_4.png");
+}
+.nav_ico .ico--5 .ico__img {
+  background-image: url("main_icon_img_5.png");
+  background-color: transparent;
+  border-radius: 0;
+  width: 230px;
+  height: 218px;
+  left: -9px;
+}
 
 footer {
   max-width:1200px;

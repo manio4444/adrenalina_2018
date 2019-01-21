@@ -96,6 +96,11 @@ header {
   height: 300px;
 }
 
+.page_bgn_banner--summer {
+  background-image: url("bgn_summer.jpg");
+  height: 400px;
+}
+
 .pytania {
   position: absolute;
   bottom: -270px;

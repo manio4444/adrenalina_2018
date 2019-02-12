@@ -96,6 +96,16 @@ $ini = parse_ini_file($ini_file);
 		</div>';
 
 	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
+		'Nauka-plywania',
+	))) {
+		echo '
+		<div class="page_bgn_banner page_bgn_banner--summer"></div>
+		<div class="auto">
+			' . $circle_contact . '
+		</div>';
+	}
+
+	if (isset($_GET['id1']) && in_array($_GET['id1'], array(
 		'Wycieczki-szkolne',
 	))) {
 		echo '

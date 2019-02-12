@@ -97,6 +97,12 @@ header {
 }
 
 .page_bgn_banner--summer {
+  background-image: url("bgn_summer2.jpg");
+  height: 400px;
+  background-position: center bottom;
+}
+
+.page_bgn_banner--swimming {
   background-image: url("bgn_summer.jpg");
   height: 400px;
 }

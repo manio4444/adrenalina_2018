@@ -87,7 +87,8 @@ header {
 
 .page_bgn_banner {
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center;
+  background-size: 100% auto;
   height:477px;
 }
 
@@ -104,6 +105,11 @@ header {
 
 .page_bgn_banner--swimming {
   background-image: url("bgn_summer.jpg");
+  height: 400px;
+}
+
+.page_bgn_banner--trips {
+  background-image: url("bgn_trips.jpg");
   height: 400px;
 }
 

@@ -99,7 +99,7 @@ $ini = parse_ini_file($ini_file);
 		'Nauka-plywania',
 	))) {
 		echo '
-		<div class="page_bgn_banner page_bgn_banner--summer"></div>
+		<div class="page_bgn_banner page_bgn_banner--swimming"></div>
 		<div class="auto">
 			' . $circle_contact . '
 		</div>';
@@ -109,10 +109,10 @@ $ini = parse_ini_file($ini_file);
 		'Wycieczki-szkolne',
 	))) {
 		echo '
-		<div class="tlo_blur"><div class="tlo"></div>
+		<div class="page_bgn_banner page_bgn_banner--trips"></div>
 		<div class="auto">
 			' . $circle_contact . '
-		</div></div>';
+		</div>';
 	}
 
 

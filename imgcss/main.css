@@ -273,7 +273,9 @@ section h2 { font-size: 120%; font-weight:bold; padding: 20px 0; }
   background-image: url("main_icon_img_3.png");
   background-size: cover;
 }
-.nav_ico .ico--4 .ico__img { background-image: url("main_icon_img_4.png");
+.nav_ico .ico--4 .ico__img {
+  background-image: url("main_icon_img_4.png");
+  background-size: cover;
 }
 .nav_ico .ico--5 .ico__img {
   background-image: url("main_icon_img_5.png");
